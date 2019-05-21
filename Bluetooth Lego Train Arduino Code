@@ -1,0 +1,493 @@
+#include <SoftwareSerial.h>
+SoftwareSerial bluetooth(9, 10); //TX RX from HC 05
+#define AIN1 7
+#define AIN2 8
+#define PWMA 6
+#define LED 5
+#define STBY 4 //Standby Low = Standby ON
+char c; // Data from App
+String readString;
+int speed; // Case Value
+boolean newData = false; //Boolean that checks for newdata from bluetooth duuh
+
+void setup() {
+  digitalWrite(AIN1, LOW); //Motor Direction 0
+  digitalWrite(AIN2, LOW); //Motor Direction 0
+  digitalWrite(STBY, LOW); //Standby Enabled
+  analogWrite(PWMA, 0);
+  bluetooth.begin(9600); // Start Bluetooth Serial
+
+}
+
+void loop() {
+  recdata(); //recieves Data from bluetooth
+  setspeed(); //sets the Speed
+
+}
+
+void recdata() {
+  while (bluetooth.available()) {
+    delay(10); // small delay to allow input buffer to fill
+    c = bluetooth.read(); //gets one byte from serial buffer
+    if (c == ',') {
+      break; //breaks out of capture loop
+    }
+    readString += c;
+  } //makes string readString
+  if (readString.length() > 0) {
+    speed = readString.toInt(); // Converts rs to int and puts it into speed
+    newData = true;
+    readString = ""; //clears variable for new input
+  }
+}
+
+
+
+void setspeed () {
+  if (newData == true ) {
+
+
+    switch (speed) {
+      case 0: {
+          digitalWrite(STBY, HIGH);
+          digitalWrite(AIN1, HIGH);
+          digitalWrite(AIN2, LOW);
+          analogWrite(PWMA, 250);
+          newData = false;
+          recdata();
+
+        }
+        break;
+
+      case 1: {
+          digitalWrite(STBY, HIGH);
+          digitalWrite(AIN1, HIGH);
+          digitalWrite(AIN2, LOW);
+          analogWrite(PWMA, 238);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 2: {
+          digitalWrite(STBY, HIGH);
+          digitalWrite(AIN1, HIGH);
+          digitalWrite(AIN2, LOW);
+          analogWrite(PWMA, 225);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 3: {
+          digitalWrite(STBY, HIGH);
+          digitalWrite(AIN1, HIGH);
+          digitalWrite(AIN2, LOW);
+          analogWrite(PWMA, 213);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 4: {
+          digitalWrite(STBY, HIGH);
+          digitalWrite(AIN1, HIGH);
+          digitalWrite(AIN2, LOW);
+          analogWrite(PWMA, 200);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 5: {
+          digitalWrite(STBY, HIGH);
+          digitalWrite(AIN1, HIGH);
+          digitalWrite(AIN2, LOW);
+          analogWrite(PWMA, 188);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 6: {
+          digitalWrite(STBY, HIGH);
+          digitalWrite(AIN1, HIGH);
+          digitalWrite(AIN2, LOW);
+          analogWrite(PWMA, 175);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 7: {
+          digitalWrite(STBY, HIGH);
+          digitalWrite(AIN1, HIGH);
+          digitalWrite(AIN2, LOW);
+          analogWrite(PWMA, 163);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 8: {
+          digitalWrite(STBY, HIGH);
+          digitalWrite(AIN1, HIGH);
+          digitalWrite(AIN2, LOW);
+          analogWrite(PWMA, 150);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 9: {
+          digitalWrite(STBY, HIGH);
+          digitalWrite(AIN1, HIGH);
+          digitalWrite(AIN2, LOW);
+          analogWrite(PWMA, 138);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 10: {
+          digitalWrite(STBY, HIGH);
+          digitalWrite(AIN1, HIGH);
+          digitalWrite(AIN2, LOW);
+          analogWrite(PWMA, 125);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 11: {
+          digitalWrite(STBY, HIGH);
+          digitalWrite(AIN1, HIGH);
+          digitalWrite(AIN2, LOW);
+          analogWrite(PWMA, 113);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 12: {
+          digitalWrite(STBY, HIGH);
+          digitalWrite(AIN1, HIGH);
+          digitalWrite(AIN2, LOW);
+          analogWrite(PWMA, 100);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 13: {
+          digitalWrite(STBY, HIGH);
+          digitalWrite(AIN1, HIGH);
+          digitalWrite(AIN2, LOW);
+          analogWrite(PWMA, 88);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 14: {
+          digitalWrite(STBY, HIGH);
+          digitalWrite(AIN1, HIGH);
+          digitalWrite(AIN2, LOW);
+          analogWrite(PWMA, 75);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 15: {
+          digitalWrite(STBY, HIGH);
+          digitalWrite(AIN1, HIGH);
+          digitalWrite(AIN2, LOW);
+          analogWrite(PWMA, 63);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 16: {
+          digitalWrite(STBY, HIGH);
+          digitalWrite(AIN1, HIGH);
+          digitalWrite(AIN2, LOW);
+          analogWrite(PWMA, 50);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 17: {
+          digitalWrite(STBY, HIGH);
+          digitalWrite(AIN1, HIGH);
+          digitalWrite(AIN2, LOW);
+          analogWrite(PWMA, 38);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 18: {
+          digitalWrite(STBY, HIGH);
+          digitalWrite(AIN1, HIGH);
+          digitalWrite(AIN2, LOW);
+          analogWrite(PWMA, 25);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 19: {
+          digitalWrite(STBY, HIGH);
+          digitalWrite(AIN1, HIGH);
+          digitalWrite(AIN2, LOW);
+          analogWrite(PWMA, 13);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 20: {
+          digitalWrite(STBY, LOW);
+          digitalWrite(AIN1, LOW);
+          digitalWrite(AIN2, LOW);
+          analogWrite(PWMA, 0);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 21: {
+          digitalWrite(STBY, HIGH);
+          digitalWrite(AIN1, LOW);
+          digitalWrite(AIN2, HIGH);
+          analogWrite(PWMA, 13);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 22: {
+          digitalWrite(STBY, HIGH);
+          digitalWrite(AIN1, LOW);
+          digitalWrite(AIN2, HIGH);
+          analogWrite(PWMA, 25);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 23: {
+          digitalWrite(STBY, HIGH);
+          digitalWrite(AIN1, LOW);
+          digitalWrite(AIN2, HIGH);
+          analogWrite(PWMA, 38);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 24: {
+          digitalWrite(STBY, HIGH);
+          digitalWrite(AIN1, LOW);
+          digitalWrite(AIN2, HIGH);
+          analogWrite(PWMA, 50);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 25: {
+          digitalWrite(STBY, HIGH);
+          digitalWrite(AIN1, LOW);
+          digitalWrite(AIN2, HIGH);
+          analogWrite(PWMA, 63);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 26: {
+          digitalWrite(STBY, HIGH);
+          digitalWrite(AIN1, LOW);
+          digitalWrite(AIN2, HIGH);
+          analogWrite(PWMA, 75);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 27: {
+          digitalWrite(STBY, HIGH);
+          digitalWrite(AIN1, LOW);
+          digitalWrite(AIN2, HIGH);
+          analogWrite(PWMA, 88);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 28: {
+          digitalWrite(STBY, HIGH);
+          digitalWrite(AIN1, LOW);
+          digitalWrite(AIN2, HIGH);
+          analogWrite(PWMA, 100);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 29: {
+          digitalWrite(STBY, HIGH);
+          digitalWrite(AIN1, LOW);
+          digitalWrite(AIN2, HIGH);
+          analogWrite(PWMA, 113);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 30: {
+          digitalWrite(STBY, HIGH);
+          digitalWrite(AIN1, LOW);
+          digitalWrite(AIN2, HIGH);
+          analogWrite(PWMA, 125);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 31: {
+          digitalWrite(STBY, HIGH);
+          digitalWrite(AIN1, LOW);
+          digitalWrite(AIN2, HIGH);
+          analogWrite(PWMA, 138);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 32: {
+          digitalWrite(STBY, HIGH);
+          digitalWrite(AIN1, LOW);
+          digitalWrite(AIN2, HIGH);
+          analogWrite(PWMA, 150);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 33: {
+          digitalWrite(STBY, HIGH);
+          digitalWrite(AIN1, LOW);
+          digitalWrite(AIN2, HIGH);
+          analogWrite(PWMA, 163);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 34: {
+          digitalWrite(STBY, HIGH);
+          digitalWrite(AIN1, LOW);
+          digitalWrite(AIN2, HIGH);
+          analogWrite(PWMA, 175);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 35: {
+          digitalWrite(STBY, HIGH);
+          digitalWrite(AIN1, LOW);
+          digitalWrite(AIN2, HIGH);
+          analogWrite(PWMA, 188);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 36: {
+          digitalWrite(STBY, HIGH);
+          digitalWrite(AIN1, LOW);
+          digitalWrite(AIN2, HIGH);
+          analogWrite(PWMA, 200);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 37: {
+          digitalWrite(STBY, HIGH);
+          digitalWrite(AIN1, LOW);
+          digitalWrite(AIN2, HIGH);
+          analogWrite(PWMA, 213);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 38: {
+          digitalWrite(STBY, HIGH);
+          digitalWrite(AIN1, LOW);
+          digitalWrite(AIN2, HIGH);
+          analogWrite(PWMA, 225);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 39: {
+          digitalWrite(STBY, HIGH);
+          digitalWrite(AIN1, LOW);
+          digitalWrite(AIN2, HIGH);
+          analogWrite(PWMA, 238);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 40: {
+          digitalWrite(STBY, HIGH);
+          digitalWrite(AIN1, LOW);
+          digitalWrite(AIN2, HIGH);
+          analogWrite(PWMA, 250);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 41: {
+          int sensorValue = analogRead(A0);
+          float voltage = sensorValue * ( 5 / 1024.0);
+          bluetooth.print(voltage);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 42: {
+          digitalWrite(LED, HIGH);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      case 43: {
+          digitalWrite(LED, LOW);
+          newData = false;
+          recdata();
+
+        }
+        break;
+      default :
+        digitalWrite(STBY, LOW);
+        digitalWrite(AIN1, LOW);
+        digitalWrite(AIN2, LOW);
+        analogWrite(PWMA, 0);
+        newData = false;
+    }
+  }
+}
